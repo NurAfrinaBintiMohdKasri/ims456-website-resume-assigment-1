@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<script type="text/javascript">
+  // <![CDATA[
+  var colour="#ff00f0";
+  var sparkles=120;
+  
+  /****************************
+  *  Tinkerbell Magic Sparkle *
+  * (c) 2005 mf2fm web-design *
+  *  http://www.mf2fm.com/rv  *
+  * DON'T EDIT BELOW THIS BOX *
+  ****************************/
+  var x=ox=400;
+  var y=oy=300;
+  var swide=800;
+  var shigh=600;
+  var sleft=sdown=0;
+  var tiny=new Array();
+  var star=new Array();
+  var starv=new Array();
+  var starx=new Array();
+  var stary=new Array();
+  var tinyx=new Array();
+  var tinyy=new Array();
+  var tinyv=new Array();
+  
+  window.onload=function() { if (document.getElementById) {
+    var i, rats, rlef, rdow;
+    for (var i=0; i<sparkles; i++) {
+      var rats=createDiv(3, 3);
+      rats.style.visibility="hidden";
+      document.body.appendChild(tiny[i]=rats);
+      starv[i]=0;
+      tinyv[i]=0;
+      var rats=createDiv(5, 5);
+      rats.style.backgroundColor="transparent";
+      rats.style.visibility="hidden";
+      var rlef=createDiv(1, 5);
+      var rdow=createDiv(5, 1);
+      rats.appendChild(rlef);
+      rats.appendChild(rdow);
+      rlef.style.top="2px";
+      rlef.style.left="0px";
+      rdow.style.top="0px";
+      rdow.style.left="2px";
+      document.body.appendChild(star[i]=rats);
+    }
+    set_width();
+    sparkle();
+  }}
+  
+  function sparkle() {
+    var c;
+    if (x!=ox || y!=oy) {
+      ox=x;
+      oy=y;
+      for (c=0; c<sparkles; c++) if (!starv[c]) {
+        star[c].style.left=(starx[c]=x)+"px";
+        star[c].style.top=(stary[c]=y)+"px";
+        star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+        star[c].style.visibility="visible";
+        starv[c]=50;
+        break;
+      }
+    }
+    for (c=0; c<sparkles; c++) {
+      if (starv[c]) update_star(c);
+      if (tinyv[c]) update_tiny(c);
+    }
+    setTimeout("sparkle()", 40);
+  }
+  
+  function update_star(i) {
+    if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+    if (starv[i]) {
+      stary[i]+=1+Math.random()*3;
+      if (stary[i]<shigh+sdown) {
+        star[i].style.top=stary[i]+"px";
+        starx[i]+=(i%5-2)/5;
+        star[i].style.left=starx[i]+"px";
+      }
+      else {
+        star[i].style.visibility="hidden";
+        starv[i]=0;
+        return;
+      }
+    }
+    else {
+      tinyv[i]=50;
+      tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+      tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+      tiny[i].style.width="2px";
+      tiny[i].style.height="2px";
+      star[i].style.visibility="hidden";
+      tiny[i].style.visibility="visible"
+    }
+  }
+  
+  function update_tiny(i) {
+    if (--tinyv[i]==25) {
+      tiny[i].style.width="1px";
+      tiny[i].style.height="1px";
+    }
+    if (tinyv[i]) {
+      tinyy[i]+=1+Math.random()*3;
+      if (tinyy[i]<shigh+sdown) {
+        tiny[i].style.top=tinyy[i]+"px";
+        tinyx[i]+=(i%5-2)/5;
+        tiny[i].style.left=tinyx[i]+"px";
+      }
+      else {
+        tiny[i].style.visibility="hidden";
+        tinyv[i]=0;
+        return;
+      }
+    }
+    else tiny[i].style.visibility="hidden";
+  }
+  
+  document.onmousemove=mouse;
+  function mouse(e) {
+    set_scroll();
+    y=(e)?e.pageY:event.y+sdown;
+    x=(e)?e.pageX:event.x+sleft;
+  }
+  
+  function set_scroll() {
+    if (typeof(self.pageYOffset)=="number") {
+      sdown=self.pageYOffset;
+      sleft=self.pageXOffset;
+    }
+    else if (document.body.scrollTop || document.body.scrollLeft) {
+      sdown=document.body.scrollTop;
+      sleft=document.body.scrollLeft;
+    }
+    else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+      sleft=document.documentElement.scrollLeft;
+    sdown=document.documentElement.scrollTop;
+    }
+    else {
+      sdown=0;
+      sleft=0;
+    }
+  }
+  
+  window.onresize=set_width;
+  function set_width() {
+    if (typeof(self.innerWidth)=="number") {
+      swide=self.innerWidth;
+      shigh=self.innerHeight;
+    }
+    else if (document.documentElement && document.documentElement.clientWidth) {
+      swide=document.documentElement.clientWidth;
+      shigh=document.documentElement.clientHeight;
+    }
+    else if (document.body.clientWidth) {
+      swide=document.body.clientWidth;
+      shigh=document.body.clientHeight;
+    }
+  }
+  
+  function createDiv(height, width) {
+    var div=document.createElement("div");
+    div.style.position="absolute";
+    div.style.height=height+"px";
+    div.style.width=width+"px";
+    div.style.overflow="hidden";
+    div.style.backgroundColor=colour;
+    return (div);
+  }
+  // ]]>
+  </script>
+  
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afrina E-Resume-Biodata</title>
+
+</head>
+
+<body>
+
+
+<table width="100%" align="center" cellspacing="0" cellpadding="0" bgcolor="#EDC9AF" border="1">
+<body background="image/back (4)`.jpg"/>
+
+
+<!-- ************1st ROW START************ -->
+
+
+<tr>
+
+
+<!-- ************HEADER START************ -->
+
+
+<td colspan="4" bgcolor="#EDC9AF
+" align="center" cellpadding="1" > 
+
+<img src="images/Black White Modern Event Twitter Header (2).jpg" width="100%" />
+
+<p align="center" style="color:brown" >
+    <a href="index.html" style="background-color: #EBA35D; 
+    border: none;
+    color: white;
+    padding: 11px 27px;
+    text-align: center;
+    box-shadow: 2px 2px 2px #333333;
+	text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px 1px;
+    cursor: pointer;">HOME</a>  
+<a href="biodata.html" style="background-color: #EBA35D; 
+    border: none;
+    color: white;
+    padding: 11px 27px;
+    text-align: center;
+    box-shadow: 2px 2px 2px #333333;
+	text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px 1px;
+    cursor: pointer;">BIODATA</a>  
+<a href="experience.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">EXPERIENCE</a> 
+
+<a href="education.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">EDUCATION</a>  
+
+<a href="family.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">FAMILY</a> 
+
+
+<a href="gallery.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">GALLERY</a> 
+
+<a href="achievement.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">ACHIEVEMENT</a> 
+
+
+</p>
+
+</td>
+
+<!-- ************HEADER END************ -->
+</tr>
+<!-- ************1st ROW END************ -->
+
+
+
+
+
+<!-- ************SIDEBAR START************ -->
+</head>
+<body >
+   <table width = "100%" > 
+      <tr >
+         <td width = "25%" bgcolor = #E2A76F valign = "top" >   
+                 
+ </div>
+  </div>
+
+  <div class="rightcolumn">
+      
+      
+<div class="card">
+    <h4><center><p class="mix">What Time is Now?</p></center></h4>
+    <center><p><canvas id="canvas" width="250" height="250"
+style="background-color:transparent">
+</canvas></center>
+
+<center><script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+function drawClock() {
+drawFace(ctx, radius);
+drawNumbers(ctx, radius);
+drawTime(ctx, radius);
+}
+
+function drawFace(ctx, radius) {
+var grad;
+ctx.beginPath();
+ctx.arc(0, 0, radius, 0, 2*Math.PI);
+ctx.fillStyle = '#FFA07A';
+ctx.fill();
+grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+grad.addColorStop(0, '#FF7F50');
+grad.addColorStop(0.5, 'lightskyblue');
+grad.addColorStop(1, '#F88158');
+ctx.strokeStyle = grad;
+ctx.lineWidth = radius*0.1;
+ctx.stroke();
+ctx.beginPath();
+ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+ctx.fillStyle = 'blue';
+ctx.fill();
+}
+
+function drawNumbers(ctx, radius) {
+var ang;
+var num;
+ctx.font = radius*0.15 + "px arial";
+ctx.textBaseline="middle";
+ctx.textAlign="center";
+for(num = 1; num < 13; num++){
+  ang = num * Math.PI / 6;
+  ctx.rotate(ang);
+  ctx.translate(0, -radius*0.85);
+  ctx.rotate(-ang);
+  ctx.fillText(num.toString(), 0, 0);
+  ctx.rotate(ang);
+  ctx.translate(0, radius*0.85);
+  ctx.rotate(-ang);
+}
+}
+
+function drawTime(ctx, radius){
+  var now = new Date();
+  var hour = now.getHours();
+  var minute = now.getMinutes();
+  var second = now.getSeconds();
+  //hour
+  hour=hour%12;
+  hour=(hour*Math.PI/6)+
+  (minute*Math.PI/(6*60))+
+  (second*Math.PI/(360*60));
+  drawHand(ctx, hour, radius*0.5, radius*0.07);
+  //minute
+  minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+  drawHand(ctx, minute, radius*0.8, radius*0.07);
+  // second
+  second=(second*Math.PI/30);
+  drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+function drawHand(ctx, pos, length, width) {
+  ctx.beginPath();
+  ctx.lineWidth = width;
+  ctx.lineCap = "round";
+  ctx.moveTo(0,0);
+  ctx.rotate(pos);
+  ctx.lineTo(0, -length);
+  ctx.stroke();
+  ctx.rotate(-pos);
+}
+</script></p></center>
+  
+<div class="card">
+      <h4><center><p class="mix">Listen to Music First?</p></center></h4>
+      <center><img src="images.gif/music-1.gif" style="width:110px;height:150px;"></center>
+
+<center> <audio controls autoplay>
+  <source src="images/Poem of the Clouds - Beautiful Piano Music for RelaxationBigRicePiano.mp3" type="audio/ogg">
+  <source src="images/Poem of the Clouds - Beautiful Piano Music for RelaxationBigRicePiano.mp3" type="audio/mpeg">
+</audio>
+    </div>           
+        
+ <div class="card">
+      <h4><center><p class="mix">Home Location</p></center></h4>
+            <center><ul > <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.2346630081854!2d103.9209815560363!3d1.4899728989134016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da401bde4b9f4b%3A0x66d492ce2e4a8aa3!2s27%2C%20Jalan%20Duku%2012%2C%20Taman%20Kota%20Masai%2C%2081700%20Pasir%20Gudang%2C%20Johor!5e0!3m2!1sen!2smy!4v1674150554777!5m2!1sen!2smy" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></center> 
+            
+<br>
+        <center><h1><script src="https://kit.fontawesome.com/3f9d4d57b9.js" crossorigin="anonymous"></script>
+        <a href="https://www.linkedin.com/in/afrina-kasri-a6a96b262/"><i class="fa fa-linkedin-square" style="font-size:48px;color:rgb(51, 43, 27)"></i></a>
+        <a href="mailto: nurafrinakasri@gmail.com"><i class="fa-solid fa-envelope" style="font-size:48px;color:rgb(51, 43, 27)"></i>
+        <a href="https://wa.link/s2fdtf"><i class="fa-brands fa-whatsapp" style="font-size:48px;color:rgb(51, 43, 27)"></i></a></center></h1>
+      
+        
+
+              <button onclick="topFunction()" id="myBtn" title="Go to top" style="font-size:50px">&#8679;</button>
+              <script>
+              
+                var mybutton = document.getElementById("myBtn");
+                
+              
+                window.onscroll = function() {scrollFunction()};
+                
+                function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                  mybutton.style.display = "block";
+                } else {
+                  mybutton.style.display = "none";
+                }
+                }
+                
+                function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                }
+                </script>
+
+
+
+
+         </td>
+         <!-- ************SIDEBAR END************ -->
+
+<!-- ************MAIN SECTION START************ -->
+
+<td width="60%" height="400px"   bgcolor=#ffefcc>
+
+
+  <center><h1><font face="Open Sans" color="#68c5a8">ABOUT ME</font></h1></center>
+<br>
+<h2 align:center ; hspace=15 ; style="text-align:justify ; position:relative ; font-weight:normal ; margin:0px ; background:none ; line-height:1.4em ;">
+  Seeking a challenging position in a reputed organization where I can learn new skills, 
+  expand my knowledge, and leverage my learnings. A highly motivated and hardworking individual 
+  looking for a responsible role in a reputable organization. 
+  </h2>
+  <br>
+  <br>
+  <hr>
+
+    <center><h1><font face="Open Sans" color="#68c5a8">MY PROFILE</font></h1></center>
+    
+         
+    <p><center><font size="5px" color="black" face="Open Sans">NAME : NUR AFRINA BINTI MOHD KASRI
+    
+    <br><br>
+    
+    AGE : 22 YEARS 
+    
+    <br><br>
+    
+    PLACE OF BIRTH : JOHOR BHARU
+    
+    <br><br>
+    
+    DATE OF BIRTH : 26 SEPTEMBER 2001
+    
+    <br><br>
+    
+    GENDER : FEMALE 
+    
+    <br><br>
+    
+    NATIONALITY : MALAYSIA 
+    
+    <br><br>
+    
+    RACE : MALAY 
+    
+    <br><br>
+    
+    RELIGION : ISLAM 
+    
+    <br><br>
+    
+    PROGRAMME : BA250 BACHELOR OF BUSINESS ADMINISTRATION (HONS) BUSINESS ECONOMICS
+    </font></center></p>
+    
+    <br><br> 
+    
+    
+    </td>
+    
+    
+    <!-- ************MAIN SECTION END************ -->
+
+    </h2>
+    <br>
+    <br>
+    <hr>
+    
+    <style>
+      h{font-size:40px;color:black;}
+      body{background-color:#EDC9AF;}

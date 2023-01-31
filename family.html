@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<script type="text/javascript">
+  // <![CDATA[
+  var colour="#ff00f0";
+  var sparkles=120;
+  
+  /****************************
+  *  Tinkerbell Magic Sparkle *
+  * (c) 2005 mf2fm web-design *
+  *  http://www.mf2fm.com/rv  *
+  * DON'T EDIT BELOW THIS BOX *
+  ****************************/
+  var x=ox=400;
+  var y=oy=300;
+  var swide=800;
+  var shigh=600;
+  var sleft=sdown=0;
+  var tiny=new Array();
+  var star=new Array();
+  var starv=new Array();
+  var starx=new Array();
+  var stary=new Array();
+  var tinyx=new Array();
+  var tinyy=new Array();
+  var tinyv=new Array();
+  
+  window.onload=function() { if (document.getElementById) {
+    var i, rats, rlef, rdow;
+    for (var i=0; i<sparkles; i++) {
+      var rats=createDiv(3, 3);
+      rats.style.visibility="hidden";
+      document.body.appendChild(tiny[i]=rats);
+      starv[i]=0;
+      tinyv[i]=0;
+      var rats=createDiv(5, 5);
+      rats.style.backgroundColor="transparent";
+      rats.style.visibility="hidden";
+      var rlef=createDiv(1, 5);
+      var rdow=createDiv(5, 1);
+      rats.appendChild(rlef);
+      rats.appendChild(rdow);
+      rlef.style.top="2px";
+      rlef.style.left="0px";
+      rdow.style.top="0px";
+      rdow.style.left="2px";
+      document.body.appendChild(star[i]=rats);
+    }
+    set_width();
+    sparkle();
+  }}
+  
+  function sparkle() {
+    var c;
+    if (x!=ox || y!=oy) {
+      ox=x;
+      oy=y;
+      for (c=0; c<sparkles; c++) if (!starv[c]) {
+        star[c].style.left=(starx[c]=x)+"px";
+        star[c].style.top=(stary[c]=y)+"px";
+        star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+        star[c].style.visibility="visible";
+        starv[c]=50;
+        break;
+      }
+    }
+    for (c=0; c<sparkles; c++) {
+      if (starv[c]) update_star(c);
+      if (tinyv[c]) update_tiny(c);
+    }
+    setTimeout("sparkle()", 40);
+  }
+  
+  function update_star(i) {
+    if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+    if (starv[i]) {
+      stary[i]+=1+Math.random()*3;
+      if (stary[i]<shigh+sdown) {
+        star[i].style.top=stary[i]+"px";
+        starx[i]+=(i%5-2)/5;
+        star[i].style.left=starx[i]+"px";
+      }
+      else {
+        star[i].style.visibility="hidden";
+        starv[i]=0;
+        return;
+      }
+    }
+    else {
+      tinyv[i]=50;
+      tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+      tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+      tiny[i].style.width="2px";
+      tiny[i].style.height="2px";
+      star[i].style.visibility="hidden";
+      tiny[i].style.visibility="visible"
+    }
+  }
+  
+  function update_tiny(i) {
+    if (--tinyv[i]==25) {
+      tiny[i].style.width="1px";
+      tiny[i].style.height="1px";
+    }
+    if (tinyv[i]) {
+      tinyy[i]+=1+Math.random()*3;
+      if (tinyy[i]<shigh+sdown) {
+        tiny[i].style.top=tinyy[i]+"px";
+        tinyx[i]+=(i%5-2)/5;
+        tiny[i].style.left=tinyx[i]+"px";
+      }
+      else {
+        tiny[i].style.visibility="hidden";
+        tinyv[i]=0;
+        return;
+      }
+    }
+    else tiny[i].style.visibility="hidden";
+  }
+  
+  document.onmousemove=mouse;
+  function mouse(e) {
+    set_scroll();
+    y=(e)?e.pageY:event.y+sdown;
+    x=(e)?e.pageX:event.x+sleft;
+  }
+  
+  function set_scroll() {
+    if (typeof(self.pageYOffset)=="number") {
+      sdown=self.pageYOffset;
+      sleft=self.pageXOffset;
+    }
+    else if (document.body.scrollTop || document.body.scrollLeft) {
+      sdown=document.body.scrollTop;
+      sleft=document.body.scrollLeft;
+    }
+    else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+      sleft=document.documentElement.scrollLeft;
+    sdown=document.documentElement.scrollTop;
+    }
+    else {
+      sdown=0;
+      sleft=0;
+    }
+  }
+  
+  window.onresize=set_width;
+  function set_width() {
+    if (typeof(self.innerWidth)=="number") {
+      swide=self.innerWidth;
+      shigh=self.innerHeight;
+    }
+    else if (document.documentElement && document.documentElement.clientWidth) {
+      swide=document.documentElement.clientWidth;
+      shigh=document.documentElement.clientHeight;
+    }
+    else if (document.body.clientWidth) {
+      swide=document.body.clientWidth;
+      shigh=document.body.clientHeight;
+    }
+  }
+  
+  function createDiv(height, width) {
+    var div=document.createElement("div");
+    div.style.position="absolute";
+    div.style.height=height+"px";
+    div.style.width=width+"px";
+    div.style.overflow="hidden";
+    div.style.backgroundColor=colour;
+    return (div);
+  }
+  // ]]>
+  </script>
+  
+
+
+
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Afrina E-Resume-Family</title>
+
+</head>
+
+<td colspan="4" bgcolor="#DAF7A6
+	" align="center" cellpadding="1" > 
+	
+	<p align="center" style="color:black" > 
+		<a href="index.html" style="background-color: #EBA35D; 
+    border: none;
+    color: white;
+    padding: 11px 27px;
+    text-align: center;
+    box-shadow: 2px 2px 2px #333333;
+	text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px 1px;
+    cursor: pointer;">HOME</a>  
+<a href="biodata.html" style="background-color: #EBA35D; 
+    border: none;
+    color: white;
+    padding: 11px 27px;
+    text-align: center;
+    box-shadow: 2px 2px 2px #333333;
+	text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px 1px;
+    cursor: pointer;">BIODATA</a>  
+<a href="experience.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">EXPERIENCE</a> 
+
+<a href="education.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">EDUCATION</a>  
+
+<a href="family.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">FAMILY</a> 
+
+
+<a href="gallery.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">GALLERY</a> 
+
+<a href="achievement.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">ACHIEVEMENT</a> 
+
+
+</p>
+
+</td>
+
+<style>
+  
+h1 {
+  font-size: 400%;
+  font-weight: bold;
+  word-break: break-all;
+  font-family: "Cinzel", serif; 
+  margin-top: 10%;
+  margin-bottom: 1%;
+  text-align: center;
+  letter-spacing: 0.3cm;
+}
+
+h2.a {
+  font-size: 250%;
+  word-break: break-all;
+  font-family: "Langar";
+  text-align: left;
+  margin-top: 5%;
+  margin-bottom: 1%;
+  margin-left: 5%;
+  color: rgb(83, 30, 51);
+}
+
+h2.b {
+  font-size: 250%;
+  word-break: break-all;
+  font-family: "Langar";
+  text-align: right;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 9%;
+  margin-bottom: 3%;
+  color: rgb(83, 30, 51);
+}
+
+h3.b {
+  font-size: 250%;
+  word-break: break-all;
+  font-family: "Macondo";
+  text-align: right;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 10%;
+  margin-bottom: 3%;
+  color: rgb(83, 30, 51);
+}
+
+h3.a {
+  font-size: 200%;
+  word-break: break-all;
+  font-family: "Macondo";
+  text-align: left;
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-bottom: 3%;
+  color: rgb(107, 29, 90);
+}
+
+img.a {
+    margin-right: 65px;
+    margin-top: 2.5%;
+    background-color: rgb(29, 24, 68);
+    float: right;
+    width: 37.5%;
+}
+
+img.b {
+    margin-left: 65px;
+    margin-top: 5%;
+    background-color: rgb(29, 24, 68);
+    float: left;
+    width: 37.5%;
+}
+
+img.c {
+    margin-left: 65px;
+    margin-top: 2%;
+    background-color: rgb(29, 24, 68);
+    float: left;
+    width: 37.5%;
+}
+
+ul.a {
+    list-style-type: circle;
+    text-align: left;
+    font-size: 130%;
+    color: brown;
+    font-family: "Margarine";
+    line-height: 1.2cm;
+    margin-top: 2%;
+    margin-left: 6%;
+    margin-right: 50%;
+    letter-spacing: 0.5px;
+    border: 10px dotted rgb(146, 93, 81);
+    background-color: rgb(255, 207, 196);
+    background-clip: padding-box;
+}
+
+ul.b {
+    list-style-type: circle;
+    text-align: left;
+    font-size: 130%;
+    color: brown;
+    font-family: "Margarine";
+    line-height: 1.2cm;
+    margin-right: 5%;
+    margin-left: 50%;
+    margin-bottom: 10%;
+    margin-top: auto;
+    letter-spacing: 0.5px;
+    border: 10px dotted rgb(146, 93, 81);
+    background-color: rgb(255, 207, 196);
+    background-clip: padding-box;
+    
+}
+
+.b{
+   margin-left: auto;
+   margin-bottom: 1%;
+   margin-top: 1%;
+   margin-right: auto;
+   border-spacing: 1px;
+}
+
+    img{
+    width: 40%;
+}
+    .c {
+  background-color: rgb(241, 233, 189);
+  margin: auto;
+}
+
+</style>
+
+
+
+<body>
+
+<h1 class="font-effect-shadow-multiple">MY HAPPY FAMILY  &#10047;</h1>
+    <hr>
+
+<p><div class="row">
+      <div class="column">
+        <center><img src="images.gif/family gif.gif" alt="dab" style="height:300px"></center>
+      </div>
+      <br>
+      <br>
+
+
+<td width="80%" bgcolor="#ffefcc">
+    
+<center><p style="font-family:Tw Cen MT;"><font size="4"></font>I have a wonderful family, and I love every member of my family. My family is made up of 7 members.</font></p></center>
+<center><img src="images/families.jpg" alt="families" style="width:40%;"></center>
+
+<center><p style="font-family:Tw Cen MT;"><font size="4"></font> This is my dad, his name is Mohd Kasri. He is currently 48 same goes to my mom, her name is Siti Roselah.</font></p></center>
+<center><img src="images/parents-3.jpg" alt="parents-3" style="width:40%;"></center>
+
+<center><p style="font-family:Tw Cen MT;"><font size="4"></font>Let me introduce, my nephew.His name is Adrian </font></p></center>
+<center><img src="images/ian.jpg" alt="adrian-1" style="width:40%;"></center>
+
+<br>
+<br>
+    <div>
+        <a target="_blank" href="images/papa.jpg">
+        <img class="a"  src="images/papa.jpg" alt="papa" width="194" height="350" float="right"></a>
+        <br>
+        <h2 class="a">MOHD KASRI, 48</h2>
+        <ul class="a">
+            <li>Company: Asian Pullprop SDN BHD</li>
+            <li>Job Title: Manager</li>
+            <li>Job Duration: December 2017-Present</li>
+            <li>"Love the life you live"</li>
+        </ul>
+    </div>
+    
+ <div>
+        <a target="_blank" href="images/mummy.jpg">
+        <img class="b" src="images/mummy.jpg" alt="mummy" width="194"height="350"  float="left"></a>
+        <h2 class="b">SITI ROSELAH, 48</h2>
+        <ul class="b">
+            <li>Company: Asian Pullprop SDN BHD</li>
+            <li>Job Title: Managing Director</li>
+            <li>Job Duration: December 2017-Present</li>
+            <li>"You only live once, but if you do it right, once is enough."</li>
+ 
+</ul>
+</div>
+
+<br>
+<br>
+
+<div>
+        <a target="_blank" href="images/kakak-1.jpg">
+        <img class="a" src="images/kakak-1.jpg" alt="kakak" width="150" height="350" float="right"></a>
+        <h2 class="a">NUR ATIYAH, 28</h2>
+        <ul class="a">
+          <li>Company: Asian Pullprop SDN BHD</li>
+          <li>Job Title: Real Estate Valuer</li>
+          <li>Job Duration: December 2019-Present</li>
+          <li>“Do what you can, with what you have, where you are.”</li>
+        </ul>
+    </div>
+
+             
+<div>
+        <a target="_blank" href="images/abang.jpg">
+        <img class="b" src="images/abang.jpg" alt="abang" width="194" height="350" float="left"></a>
+        <h2 class="b">MOHD DANIAL, 24</h2>
+        <ul class="b">
+            <li>Company: A Mohd Nor & Partners</li>
+            <li>Job Title: Valuer (Internship)</li>
+            <li>Job Duration: December 2022-Present</li>
+            <li>"You only live once, but if you do it right, once is enough."</li>
+</ul>
+</div>
+
+<div>
+        <a target="_blank" href="images/aku.jpg">
+        <img class="a" src="images/aku.jpg" alt="aku" width="194" height="350" float="right"></a>
+        <h2 class="a">ME, 22</h2>
+        <ul class="a">
+          <li>Institute: UiTM Kota Bharu</li>
+          <li>Course: Business Administration</li>
+          <li>Job Duration: March 2021-Present</li>
+          <li>“Do something that your future self will thank you for.”</li>
+        </ul>
+    </div>
+
+
+<div>
+        <a target="_blank" href="images/afiqah.jpg">
+        <img class="b" src="images/afiqah.jpg" alt="afiqah" width="194" height="350" float="left"></a>
+        <h2 class="b">NUR AFIQAH, 17</h2>
+        <ul class="b">
+            <li>School: SMK Kota Masai</li>
+            <li>Course: Science Stream</li>
+            <li>Duration: December 2017-Present</li>
+            <li>"Learn to light a candle in the darkest moments of someone's life. Be the light that helps others see."</li>
+</ul>
+</div>
+
+<div>
+        <a target="_blank" href="images/adlina.jpg">
+        <img class="a" src="images/adlina.jpg" alt="adlina" width="194" height="350" float="right"></a>
+        <h2 class="a">NUR ADLINA, 13</h2>
+        <ul class="a">
+          <li>School: SMK Kota Masai</li>
+          <li>Duration: December 2017-Present</li>
+          <li>“Life isn't about having Everything, it's about finding meaning in Everything."</li>
+        </ul>
+    </div>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top" style="font-size:50px">&#8679;</button>
+    <script>
+    
+      var mybutton = document.getElementById("myBtn");
+      
+    
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+      }
+      
+      function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+      }
+      </script>
+
+
+
+
+
+
+ 
+    
+    <style>
+    h{font-size:40px;color:black;}
+    body{background-color:#EDC9AF;}
+
+    
+    
+    

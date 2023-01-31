@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<script type="text/javascript">
+    // <![CDATA[
+    var colour="#ff00f0";
+    var sparkles=120;
+    
+    /****************************
+    *  Tinkerbell Magic Sparkle *
+    * (c) 2005 mf2fm web-design *
+    *  http://www.mf2fm.com/rv  *
+    * DON'T EDIT BELOW THIS BOX *
+    ****************************/
+    var x=ox=400;
+    var y=oy=300;
+    var swide=800;
+    var shigh=600;
+    var sleft=sdown=0;
+    var tiny=new Array();
+    var star=new Array();
+    var starv=new Array();
+    var starx=new Array();
+    var stary=new Array();
+    var tinyx=new Array();
+    var tinyy=new Array();
+    var tinyv=new Array();
+    
+    window.onload=function() { if (document.getElementById) {
+      var i, rats, rlef, rdow;
+      for (var i=0; i<sparkles; i++) {
+        var rats=createDiv(3, 3);
+        rats.style.visibility="hidden";
+        document.body.appendChild(tiny[i]=rats);
+        starv[i]=0;
+        tinyv[i]=0;
+        var rats=createDiv(5, 5);
+        rats.style.backgroundColor="transparent";
+        rats.style.visibility="hidden";
+        var rlef=createDiv(1, 5);
+        var rdow=createDiv(5, 1);
+        rats.appendChild(rlef);
+        rats.appendChild(rdow);
+        rlef.style.top="2px";
+        rlef.style.left="0px";
+        rdow.style.top="0px";
+        rdow.style.left="2px";
+        document.body.appendChild(star[i]=rats);
+      }
+      set_width();
+      sparkle();
+    }}
+    
+    function sparkle() {
+      var c;
+      if (x!=ox || y!=oy) {
+        ox=x;
+        oy=y;
+        for (c=0; c<sparkles; c++) if (!starv[c]) {
+          star[c].style.left=(starx[c]=x)+"px";
+          star[c].style.top=(stary[c]=y)+"px";
+          star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+          star[c].style.visibility="visible";
+          starv[c]=50;
+          break;
+        }
+      }
+      for (c=0; c<sparkles; c++) {
+        if (starv[c]) update_star(c);
+        if (tinyv[c]) update_tiny(c);
+      }
+      setTimeout("sparkle()", 40);
+    }
+    
+    function update_star(i) {
+      if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+      if (starv[i]) {
+        stary[i]+=1+Math.random()*3;
+        if (stary[i]<shigh+sdown) {
+          star[i].style.top=stary[i]+"px";
+          starx[i]+=(i%5-2)/5;
+          star[i].style.left=starx[i]+"px";
+        }
+        else {
+          star[i].style.visibility="hidden";
+          starv[i]=0;
+          return;
+        }
+      }
+      else {
+        tinyv[i]=50;
+        tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+        tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+        tiny[i].style.width="2px";
+        tiny[i].style.height="2px";
+        star[i].style.visibility="hidden";
+        tiny[i].style.visibility="visible"
+      }
+    }
+    
+    function update_tiny(i) {
+      if (--tinyv[i]==25) {
+        tiny[i].style.width="1px";
+        tiny[i].style.height="1px";
+      }
+      if (tinyv[i]) {
+        tinyy[i]+=1+Math.random()*3;
+        if (tinyy[i]<shigh+sdown) {
+          tiny[i].style.top=tinyy[i]+"px";
+          tinyx[i]+=(i%5-2)/5;
+          tiny[i].style.left=tinyx[i]+"px";
+        }
+        else {
+          tiny[i].style.visibility="hidden";
+          tinyv[i]=0;
+          return;
+        }
+      }
+      else tiny[i].style.visibility="hidden";
+    }
+    
+    document.onmousemove=mouse;
+    function mouse(e) {
+      set_scroll();
+      y=(e)?e.pageY:event.y+sdown;
+      x=(e)?e.pageX:event.x+sleft;
+    }
+    
+    function set_scroll() {
+      if (typeof(self.pageYOffset)=="number") {
+        sdown=self.pageYOffset;
+        sleft=self.pageXOffset;
+      }
+      else if (document.body.scrollTop || document.body.scrollLeft) {
+        sdown=document.body.scrollTop;
+        sleft=document.body.scrollLeft;
+      }
+      else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+        sleft=document.documentElement.scrollLeft;
+        sdown=document.documentElement.scrollTop;
+      }
+      else {
+        sdown=0;
+        sleft=0;
+      }
+    }
+    
+    window.onresize=set_width;
+    function set_width() {
+      if (typeof(self.innerWidth)=="number") {
+        swide=self.innerWidth;
+        shigh=self.innerHeight;
+      }
+      else if (document.documentElement && document.documentElement.clientWidth) {
+        swide=document.documentElement.clientWidth;
+        shigh=document.documentElement.clientHeight;
+      }
+      else if (document.body.clientWidth) {
+        swide=document.body.clientWidth;
+        shigh=document.body.clientHeight;
+      }
+    }
+    
+    function createDiv(height, width) {
+      var div=document.createElement("div");
+      div.style.position="absolute";
+      div.style.height=height+"px";
+      div.style.width=width+"px";
+      div.style.overflow="hidden";
+      div.style.backgroundColor=colour;
+      return (div);
+    }
+    // ]]>
+    </script>
+    
+
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Afrina E-Resume-Gallery</title>
+
+</head>
+
+<td colspan="4" bgcolor="#DAF7A6
+	" align="center" cellpadding="1" > 
+	
+	<p align="center" style="color:black" > 
+		<a href="index.html" style="background-color: #EBA35D; 
+			border: none;
+			color: white;
+			padding: 11px 27px;
+			text-align: center;
+			box-shadow: 2px 2px 2px #333333;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 3px 1px;
+			cursor: pointer;">HOME</a>  
+		<a href="biodata.html" style="background-color: #EBA35D; 
+			border: none;
+			color: white;
+			padding: 11px 27px;
+			text-align: center;
+			box-shadow: 2px 2px 2px #333333;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 3px 1px;
+			cursor: pointer;">BIODATA</a>  
+		<a href="experience.html" style="background-color: #EBA35D; 
+			border: none;
+			color: white;
+			padding: 11px 27px;
+			text-align: center;
+			box-shadow: 2px 2px 2px #333333;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 3px 1px;
+			cursor: pointer;">EXPERIENCE</a> 
+
+		<a href="education.html" style="background-color: #EBA35D; 
+			border: none;
+			color: white;
+			padding: 11px 27px;
+			text-align: center;
+			box-shadow: 2px 2px 2px #333333;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 3px 1px;
+			cursor: pointer;">EDUCATION</a>  
+
+<a href="family.html" style="background-color: #EBA35D; 
+			border: none;
+			color: white;
+			padding: 11px 27px;
+			text-align: center;
+			box-shadow: 2px 2px 2px #333333;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 3px 1px;
+			cursor: pointer;">FAMILY</a> 
+
+
+<a href="gallery.html" style="background-color: #EBA35D; 
+			border: none;
+			color: white;
+			padding: 11px 27px;
+			text-align: center;
+			box-shadow: 2px 2px 2px #333333;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 3px 1px;
+			cursor: pointer;">GALLERY</a> 
+
+		<a href="achievement.html" style="background-color: #EBA35D; 
+			border: none;
+			color: white;
+			padding: 11px 27px;
+			text-align: center;
+			box-shadow: 2px 2px 2px #333333;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 3px 1px;
+			cursor: pointer;">ACHIEVEMENT</a> 
+		
+		</p>
+			
+		</td>
+        <style> 
+            blockquote { 
+           background-image: url(image/bg.jpg);border:2px solid #FF62B0;border-left:10pt double #FF62B0;padding: 3px;border-bottom-left-radius: 10px;border-top-left-radius: 10px;} 
+            
+            blockquote:hover { 
+           background: #d2e5eb; 
+           -webkit-transition-duration: 2.5s; 
+           background-image:url(image/stolobeli.png); 
+           background-position:bottom right; 
+           background-repeat:no-repeat; 
+           border:2px dashed #FF62B0; 
+           border-right:10pt double #FF62B0; 
+           text-shadow: -1px 0px 1px #000; 
+           } 
+            
+            
+           blockquote p { 
+           margin: .75em 0; 
+           } 
+           </style>
+  
+<body>
+
+<table width="80%" align="center" cellspacing="1" cellpadding="0" bgcolor="#383838" border="0">
+<body background="image/back (4).jpg"/>
+
+
+<!-- ************1st ROW START************ -->
+
+
+<tr>
+
+
+<!-- ************HEADER START************ -->
+
+
+<td colspan="4" bgcolor="#333333" align="center" cellpadding="1" > 
+
+ 
+    </tr>
+    <!--***************************** MENU SECTION END **********************************-->
+
+<!--********************************* 1st ROW END ***************************************-->
+
+<!--********************************* 2nd ROW START ***************************************-->
+<tr>
+<!--********************************** CONTENT SECTION START **************************************-->
+	<td width="80%" bgcolor="#ffefcc">
+    
+        <body>
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+    
+    <h1><marquee><center><p class="mix">&#10047;WELCOME TO AFRINA'S GALLERY&#10047;</marquee></center></p></h1>
+      <h2><center><p class="mix">LET'S TAKE A LOOK ! </p></center></h2><p>
+
+<style>
+    p.mix {border-style: solid dashed solid dashed;
+    background-color: #d6d8d694;
+     border-color: #8beaf8;
+    }
+    </style>
+
+<p><div class="row">
+  <div class="column">
+  <center><img src="images.gif/photo.gif" alt="dap" style="height: 450px; width: 600px"><center>
+  </div>
+</div></p>
+
+<p>
+<center><i><blockquote>
+<p>
+The pictures above shows the warmth between my family and I. I really love my family because, they often give me words of encouragement when I'm down. They also helped me when I needed help. I have 5 siblings, and I am the third child of 5 siblings.
+<p>
+Besides, my sister were married. My eldest sister had 1 children with her husband. His name is Adrian. He is cheeky yet clever. My brother is doing his internship while my 2 younger sisters are still in school and have not finished studying. A collection of memory quotes to remind us each day is an opportunity to make good memories...The moments we share are the moments we keep forever
+</i></blockquote></center>
+<p>
+</p>
+<p>
+
+      <p>
+      <center><i><blockquote>
+      <p>
+      The pictures above shows the homecook & baking activities that I do when I have leisure time. Hearing the words "This is amazing" was a huge motivator for me to keep spending time in the kitchen when I was learning to cook.
+      <p>
+      Besides, When I was a little kid, I used to help my mother in the kitchen. She would always make my favourite dishes. Watching her cook since I was a kid, made me want to try out.
+      </i></blockquote></center>
+      <p>
+      </p>
+
+      <center><video width="400" controls> 
+        <source src="images.mp4/olaf.mp4" type="video/mp4"> 
+        <source src="images.mp4/olaf.mp4" type="video/ogg"> 
+        </video>     
+        </video></center> 
+                 
+                  
+                <p> 
+                <blockquote><center> This is Olaf. He is smart & loves to eat so much until we need to spend more for his foods but as long as he is healthy. He likes to go out but luckily he knows to find way back home otherwise I'm gonna punch him.</blockquote></center> 
+                 
+                </div> 
+            </div>
+
+	  <button onclick="topFunction()" id="myBtn" title="Go to top" style="font-size:50px">&#8679;</button>
+	  <script>
+	  
+		var mybutton = document.getElementById("myBtn");
+		
+	  
+		window.onscroll = function() {scrollFunction()};
+		
+		function scrollFunction() {
+		  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			mybutton.style.display = "block";
+		  } else {
+			mybutton.style.display = "none";
+		  }
+		}
+		
+		function topFunction() {
+		  document.body.scrollTop = 0;
+		  document.documentElement.scrollTop = 0;
+		}
+		</script>
+
+
+</head>
+	</td>
+	
+<!--********** CONTENT SECTION END **********-->
+
+</tr>
+<!--********** 2nd ROW END **********-->
+
+<!--********** 3rd ROW START **********-->
+<tr>
+ 
+</tr>
+<!--********** 3rd ROW END **********-->
+
+</table>
+</body>
+
+<style>
+    h{font-size:40px;color:black;}
+    body{background-color:#EDC9AF;}
+
+
+

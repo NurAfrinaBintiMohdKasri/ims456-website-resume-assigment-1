@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<script type="text/javascript">
+    // <![CDATA[
+    var colour="#ff00f0";
+    var sparkles=120;
+    
+    /****************************
+    *  Tinkerbell Magic Sparkle *
+    * (c) 2005 mf2fm web-design *
+    *  http://www.mf2fm.com/rv  *
+    * DON'T EDIT BELOW THIS BOX *
+    ****************************/
+    var x=ox=400;
+    var y=oy=300;
+    var swide=800;
+    var shigh=600;
+    var sleft=sdown=0;
+    var tiny=new Array();
+    var star=new Array();
+    var starv=new Array();
+    var starx=new Array();
+    var stary=new Array();
+    var tinyx=new Array();
+    var tinyy=new Array();
+    var tinyv=new Array();
+    
+    window.onload=function() { if (document.getElementById) {
+      var i, rats, rlef, rdow;
+      for (var i=0; i<sparkles; i++) {
+        var rats=createDiv(3, 3);
+        rats.style.visibility="hidden";
+        document.body.appendChild(tiny[i]=rats);
+        starv[i]=0;
+        tinyv[i]=0;
+        var rats=createDiv(5, 5);
+        rats.style.backgroundColor="transparent";
+        rats.style.visibility="hidden";
+        var rlef=createDiv(1, 5);
+        var rdow=createDiv(5, 1);
+        rats.appendChild(rlef);
+        rats.appendChild(rdow);
+        rlef.style.top="2px";
+        rlef.style.left="0px";
+        rdow.style.top="0px";
+        rdow.style.left="2px";
+        document.body.appendChild(star[i]=rats);
+      }
+      set_width();
+      sparkle();
+    }}
+    
+    function sparkle() {
+      var c;
+      if (x!=ox || y!=oy) {
+        ox=x;
+        oy=y;
+        for (c=0; c<sparkles; c++) if (!starv[c]) {
+          star[c].style.left=(starx[c]=x)+"px";
+          star[c].style.top=(stary[c]=y)+"px";
+          star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+          star[c].style.visibility="visible";
+          starv[c]=50;
+          break;
+        }
+      }
+      for (c=0; c<sparkles; c++) {
+        if (starv[c]) update_star(c);
+        if (tinyv[c]) update_tiny(c);
+      }
+      setTimeout("sparkle()", 40);
+    }
+    
+    function update_star(i) {
+      if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+      if (starv[i]) {
+        stary[i]+=1+Math.random()*3;
+        if (stary[i]<shigh+sdown) {
+          star[i].style.top=stary[i]+"px";
+          starx[i]+=(i%5-2)/5;
+          star[i].style.left=starx[i]+"px";
+        }
+        else {
+          star[i].style.visibility="hidden";
+          starv[i]=0;
+          return;
+        }
+      }
+      else {
+        tinyv[i]=50;
+        tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+        tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+        tiny[i].style.width="2px";
+        tiny[i].style.height="2px";
+        star[i].style.visibility="hidden";
+        tiny[i].style.visibility="visible"
+      }
+    }
+    
+    function update_tiny(i) {
+      if (--tinyv[i]==25) {
+        tiny[i].style.width="1px";
+        tiny[i].style.height="1px";
+      }
+      if (tinyv[i]) {
+        tinyy[i]+=1+Math.random()*3;
+        if (tinyy[i]<shigh+sdown) {
+          tiny[i].style.top=tinyy[i]+"px";
+          tinyx[i]+=(i%5-2)/5;
+          tiny[i].style.left=tinyx[i]+"px";
+        }
+        else {
+          tiny[i].style.visibility="hidden";
+          tinyv[i]=0;
+          return;
+        }
+      }
+      else tiny[i].style.visibility="hidden";
+    }
+    
+    document.onmousemove=mouse;
+    function mouse(e) {
+      set_scroll();
+      y=(e)?e.pageY:event.y+sdown;
+      x=(e)?e.pageX:event.x+sleft;
+    }
+    
+    function set_scroll() {
+      if (typeof(self.pageYOffset)=="number") {
+        sdown=self.pageYOffset;
+        sleft=self.pageXOffset;
+      }
+      else if (document.body.scrollTop || document.body.scrollLeft) {
+        sdown=document.body.scrollTop;
+        sleft=document.body.scrollLeft;
+      }
+      else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+        sleft=document.documentElement.scrollLeft;
+        sdown=document.documentElement.scrollTop;
+      }
+      else {
+        sdown=0;
+        sleft=0;
+      }
+    }
+    
+    window.onresize=set_width;
+    function set_width() {
+      if (typeof(self.innerWidth)=="number") {
+        swide=self.innerWidth;
+        shigh=self.innerHeight;
+      }
+      else if (document.documentElement && document.documentElement.clientWidth) {
+        swide=document.documentElement.clientWidth;
+        shigh=document.documentElement.clientHeight;
+      }
+      else if (document.body.clientWidth) {
+        swide=document.body.clientWidth;
+        shigh=document.body.clientHeight;
+      }
+    }
+    
+    function createDiv(height, width) {
+      var div=document.createElement("div");
+      div.style.position="absolute";
+      div.style.height=height+"px";
+      div.style.width=width+"px";
+      div.style.overflow="hidden";
+      div.style.backgroundColor=colour;
+      return (div);
+    }
+    // ]]>
+    </script>
+    
+  
+
+
+
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afrina E-Resume-Home</title>
+
+</head>
+
+<body>
+
+
+    <table width="100%" align="center" cellspacing="0" cellpadding="0" bgcolor="#003d66" border="1">
+    <body background="image/back (4)`.jpg"/>
+
+
+<!-- ************1st ROW START************ -->
+
+
+<tr>
+
+
+<!-- ************HEADER START************ -->
+
+
+<td colspan="4" bgcolor="#EDC9AF"
+" align="center" cellpadding="1" > 
+
+<img src="images/Black White Modern Event Twitter Header (2).jpg" width="100%" />
+
+
+
+<p align="center" style="color:black" > 
+<a href="index.html" style="background-color: #EBA35D; 
+    border: none;
+    color: white;
+    padding: 11px 27px;
+    text-align: center;
+    box-shadow: 2px 2px 2px #333333;
+	text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px 1px;
+    cursor: pointer;">HOME</a>  
+<a href="biodata.html" style="background-color: #EBA35D; 
+    border: none;
+    color: white;
+    padding: 11px 27px;
+    text-align: center;
+    box-shadow: 2px 2px 2px #333333;
+	text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px 1px;
+    cursor: pointer;">BIODATA</a>  
+<a href="experience.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">EXPERIENCE</a> 
+
+<a href="education.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">EDUCATION</a>  
+
+<a href="family.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">FAMILY</a> 
+
+
+<a href="gallery.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">GALLERY</a> 
+
+<a href="achievement.html" style="background-color: #EBA35D; 
+border: none;
+color: white;
+padding: 11px 27px;
+text-align: center;
+box-shadow: 2px 2px 2px #333333;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 3px 1px;
+cursor: pointer;">ACHIEVEMENT</a> 
+
+
+</td>
+
+
+<!-- ************HEADER END************ -->
+
+<!-- *********1ST ROW END************ -->
+
+<!-- *********2ND ROW START************ -->
+
+<tr align="center">
+
+    <!-- *********1st content START************ -->
+    
+    <td width="80%" height="500px"   bgcolor="#edf0f5">
+    
+        <p><center><a href="images.gif/uitmlogo.gif"><img src="images.gif/uitmlogo.gif" title="Click to enlarge image" /></a></center></p>
+
+    
+    <center><h1><font face="Open Sans" color="#333333">FACULTY OF BUSINESS ADMINISTRATION (ECONOMICS)</font></h1></center>
+    <center><h1><font face="Open Sans" color="#333333">UNIVERSITI TEKNOLOGI MARA</font></h1></center>
+    <center><h1><font face="Open Sans" color="#333333">KAMPUS KOTA BHARU</font></h1></center>
+    <br>
+    
+    <center><p hspace="10"><font face="Open Sans" size="5px" color="black"><b><big>TITLE</big></b><br>
+    MY E-RESUME</font></p></center>
+    
+    <br>
+    
+    <center><p><font face="Open Sans" size="5px" color="black"><b><big>NAME</big></b><br>
+    NUR AFRINA BINTI MOHD KASRI</font></p></center>
+    
+    <br>
+    
+    <center><p><font face="Open Sans" size="5px" color="black"><b><big>STUDENT ID</big></b><br>
+    2021885632</font></p></center>
+    
+    <br>
+    
+    <center><p><font face="Open Sans" size="5px" color="black"><b><big>GROUP</big></b><br>
+    D2BA2503B</font></p></center>
+    
+    <br>
+    
+    <center><p><font face="Open Sans" size="5px" color="black"><b><big>COURSE CODE</big></b><br>
+    IMS456</font></p></center>
+    
+    <br>
+    
+    <center><p><font face="Open Sans" size="5px" color="black"><b><big>COURSE NAME</big></b><br>
+    BASIC WEB DESIGN AND CONTENT MANAGEMENT</font></p></center>
+    
+    <br>
+    
+    <center><p><font face="Open Sans" size="5px" color="black"><b><big>PROGRAMME CODE</big></b><br>
+    BA250 BACHELOR OF BUSINESS ADMINISTRATION (HONS) BUSINESS ECONOMICS</font></p></center>
+    
+    <br>
+    
+    <center><p><font face="Open Sans" size="5px" color="black"><b><big>FACULTY</big></b><br>
+    BUSINESS ADMINISTRATION (ECONOMICS)</font></p></center>
+    
+    <br>
+    
+    <center><p><font face="Open Sans" size="5px" color="black"><b><big>SUBMISSION DATE</big></b><br>
+    JANUARY 26, 2023</font></p></center>
+    
+    <br>
+    
+    <center><p><font face="Open Sans" size="5px" color="black"><b><big>LECTURER'S NAME</big></b><br>
+    SIR FAIZAL HAINI FADZIL</font></p></center>
+    
+    <br>
+    
+    </td>
+    
+    <!-- *********1st content END************** -->
+    
+    </tr>
+    
+    <!-- *********2ND ROW END************** -->
+    
+    <tr>
+    
+    <!-- *********FOOTER START************ -->
+    
+    <td colspan="4" bgcolor="#E19953" style="font-size:120% ; text-align:center">
+    
+    <p align="center" style="color:#333333" ><small>&copy; 2023 Nur Afrina Binti Mohd Kasri</small></p>
+    
+    <p align="center" style="color:#333333" ><small>This website are for the purpose of assignment on HTML only. 
+    
+    <br>
+    
+    Recommended browser Google Chrome. Resolution 1366 X 768.<br>
+    Last update January, 2023</small></p>
+    
+    </td>
+            
+    </tr>
+    
+    <!-- *********FOOTER END************** -->
+    
+    </table>
+    
+    </body>
+    
+    </html>
